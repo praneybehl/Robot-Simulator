@@ -73,24 +73,27 @@ class Robot {
 	 */
 	move() {
 
-		if(this.isPlaced) {
-			switch (this.f) {
-				case "NORTH":
-					this.validateY(this.y + 1) ? this.y += 1 : "";
-					break;
+		if(!this.isPlaced) {
+			console.log(`'MOVE' command ignored, Robot not place on the table.`);
+			return this;
+		}
 
-				case "EAST":
-					this.validateX(this.x + 1) ? this.x += 1 : "";
-					break;
+		switch (this.f) {
+			case "NORTH":
+				this.validateY(this.y + 1) ? this.y += 1 : "";
+				break;
 
-				case "SOUTH":
-					this.validateY(this.y - 1) ? this.y -= 1 : "";
-					break;
+			case "EAST":
+				this.validateX(this.x + 1) ? this.x += 1 : "";
+				break;
 
-				case "WEST":
-					this.validateX(this.x - 1) ? this.x -= 1 : "";
-					break;
-			}
+			case "SOUTH":
+				this.validateY(this.y - 1) ? this.y -= 1 : "";
+				break;
+
+			case "WEST":
+				this.validateX(this.x - 1) ? this.x -= 1 : "";
+				break;
 		}
 		return this;
 	}
@@ -101,9 +104,13 @@ class Robot {
 	 */
 	left() {
 
-		if(this.isPlaced) {
-			this.f = map[this.f].left;
+		if(!this.isPlaced) {
+			console.log(`'LEFT' command ignored, Robot not place on the table.`);
+			return this;
 		}
+
+		this.f = map[this.f].left;
+
 		return this;
 	}
 
@@ -113,9 +120,12 @@ class Robot {
 	 */
 	right() {
 
-		if(this.isPlaced) {
-			this.f = map[this.f].right;
+		if(!this.isPlaced) {
+			console.log(`'RIGHT' command ignored, Robot not place on the table.`);
+			return this;
 		}
+		this.f = map[this.f].right;
+
 		return this;
 	}
 

@@ -17,7 +17,7 @@ $ npm start -- test/data/sampleData1.txt
 Or to run directly from terminal, install babel-cli globally and run :
 ```sh
 $ npm install -g babel-cli
-$ babel-node babel-node index.js -- test/data/sampleData1.txt
+$ babel-node index.js -- test/data/sampleData1.txt
 ```
 Or to run using commandline and provide commands one line at a time, run:
 

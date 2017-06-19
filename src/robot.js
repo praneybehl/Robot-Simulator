@@ -1,4 +1,5 @@
 'use strict';
+import color from "colors-cli/safe";
 
 /**
  * The max coordinates of the table
@@ -74,7 +75,7 @@ class Robot {
 	move() {
 
 		if(!this.isPlaced) {
-			console.log(`'MOVE' command ignored, Robot not place on the table.`);
+			console.log(color.cyan(`'MOVE' command ignored, Robot not place on the table.`));
 			return this;
 		}
 
@@ -105,7 +106,7 @@ class Robot {
 	left() {
 
 		if(!this.isPlaced) {
-			console.log(`'LEFT' command ignored, Robot not place on the table.`);
+			console.log(color.cyan(`'LEFT' command ignored, Robot not place on the table.`));
 			return this;
 		}
 
@@ -121,7 +122,7 @@ class Robot {
 	right() {
 
 		if(!this.isPlaced) {
-			console.log(`'RIGHT' command ignored, Robot not place on the table.`);
+			console.log(color.cyan(`'RIGHT' command ignored, Robot not place on the table.`));
 			return this;
 		}
 		this.f = map[this.f].right;
@@ -136,8 +137,8 @@ class Robot {
 	report() {
 
 		if(this.isPlaced) {
-			console.log(`Output: ${this.x},${this.y},${this.f}`);
-		} else console.log(`Robot not place on the table. Try placing the robot on the table again`);
+			console.log(color.green.bold(`Output: ${this.x},${this.y},${this.f}`));
+		} else console.log(color.cyan(`'REPORT' command ignored. Robot not place on the table. Try to place the robot on the table again`));
 		return this;
 	}
 
@@ -149,7 +150,7 @@ class Robot {
 	validateX(x) {
 
 		if(isNaN(x) || x < 0 || x > cordsMax.x) {
-			!this.isPlaced ? console.log(`Please enter a valid X coordinate value. Hint: Use a number between 0 and ${cordsMax.x}`) : "";
+			!this.isPlaced ? console.log(color.cyan(`'PLACE' ignored. Please enter a valid X coordinate value. Hint: Use a number between 0 and ${cordsMax.x}`)) : "";
 			return false;
 		} else return true;
 	}
@@ -162,7 +163,7 @@ class Robot {
 	validateY(y) {
 
 		if(isNaN(y) || y < 0 || y > cordsMax.y) {
-			!this.isPlaced ? console.log(`Please enter a valid Y coordinate value. Hint: Use a number between 0 and ${cordsMax.y}`) : "";
+			!this.isPlaced ? console.log(color.cyan(`'PLACE' ignored. Please enter a valid Y coordinate value. Hint: Use a number between 0 and ${cordsMax.y}`)) : "";
 			return false;
 		} else return true;
 	}
@@ -175,7 +176,7 @@ class Robot {
 	validateF(f) {
 
 		if(directions.indexOf(f) === -1) {
-			!this.isPlaced ? console.log("Please enter a valid facing direction. Hint: Use UPPERCASE") : "";
+			!this.isPlaced ? console.log(color.cyan(`'PLACE' ignored. Please enter a valid facing direction. Hint: Use UPPERCASE`)) : "";
 			return false;
 		} else return true;
 	}

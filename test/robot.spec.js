@@ -100,8 +100,8 @@ describe("Robot", () => {
 		robot.report();
 		expect(spy.called).to.be.true;
 		expect(spy.callCount).to.equal(2);
-		expect(spy.getCall(0).args[0].split(' ')[1]).to.equal('1,2,WEST');
-		expect(spy.getCall(1).args[0].split(' ')[1]).to.equal('0,2,WEST');
+		expect(spy.getCall(0).args[0].split(' ')[1]).to.equal('1,2,WEST\u001b[0m\u001b[0m\u001b[0m');
+		expect(spy.getCall(1).args[0].split(' ')[1]).to.equal('0,2,WEST\u001b[0m\u001b[0m\u001b[0m');
 		spy.restore();
 	});
 
@@ -126,7 +126,7 @@ describe("Robot", () => {
 		expect(robot.y).to.equal(1);
 		expect(robot.f).to.equal("NORTH");
 		expect(spy.called).to.be.true;
-		expect(spy.getCall(0).args[0].split(' ')[1]).to.equal('0,1,NORTH');
+		expect(spy.getCall(0).args[0].split(' ')[1]).to.equal('0,1,NORTH\u001b[0m\u001b[0m\u001b[0m');
 		spy.restore();
 	});
 

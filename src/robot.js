@@ -127,7 +127,7 @@ class Robot {
 
 		if(this.isPlaced) {
 			console.log(`Output: ${this.x},${this.y},${this.f}`);
-		}
+		} else console.log(`Robot not place on the table. Try placing the robot on the table again`);
 		return this;
 	}
 
